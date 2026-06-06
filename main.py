@@ -156,10 +156,10 @@ class MajorLoginInterceptor:
             if any(req.path == r or req.path.startswith(r + "/") or req.path.startswith(r + "?") for r in admin_routes):
                 if "freefire" not in req.host.lower() and "garena" not in req.host.lower():
                     req.host = "127.0.0.1"
-                    req.port = 5000
+                    req.port = 2130
                     req.scheme = "http"
                     if "Host" in req.headers:
-                        req.headers["Host"] = "127.0.0.1:5000"
+                        req.headers["Host"] = "127.0.0.1:2130"
                     return
         # ---------------------------------------------
 
@@ -355,14 +355,14 @@ if __name__ == "__main__":
     Console.success("Service 1 : mitmproxy      → port 8080 (login interceptor)")
     Console.success("Service 2 : TCP Controller   → port 19112 (DLL raw traffic)")
     Console.success("Service 3 : JWT API          → port 1080 (JWT utility)")
-    Console.success("Service 4 : Admin Panel      → port 5000 (web interface)")
+    Console.success("Service 4 : Admin Panel      → port 2130 (web interface)")
     Console.info("Platform  : 3 (Garena Android)")
     Console.info("Method    : my_pb2 real-proto (JWT approach)")
     Console.divider()
     
     Console.success("TCP Controller thread started (port 19112)")
     Console.success("JWT API thread started (port 1080)")
-    Console.success("Admin Panel started (port 5000)")
+    Console.success("Admin Panel started (port 2130)")
     Console.success("mitmproxy started (port 8080)")
     
     # Static Width Centered Box
