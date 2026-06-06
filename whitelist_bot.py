@@ -30,7 +30,9 @@ def get_whitelist():
         return jsonify([])
 
 def run_flask():
-    app.run(host='0.0.0.0', port=8080)
+    app.run(
+    host='0.0.0.0',
+    port=int(os.environ.get("PORT", 8080))
 
 threading.Thread(target=run_flask, daemon=True).start()
 # ===== API Code End =====
