@@ -40,8 +40,8 @@ proto_template = init_template()
 # REMOTE UID SERVER CONFIG
 # ══════════════════════════════════════════════════════════════
 UID_SERVERS = {
-    "MAIN":   "https://raw.githubusercontent.com/UIDBYPASS/uidbypass/main/uidbypass/raw/uid",
-    "BACKUP": "https://raw.githubusercontent.com/UIDBYPASS/uidbypass/main/uidbypass/raw/uid",
+    "MAIN":   "https://uid-bypass-production-c050.up.railway.app/whitelist",
+    "BACKUP": "https://uid-bypass-production-c050.up.railway.app/whitelist",
 }
 
 # ══════════════════════════════════════════════════════════════
