@@ -225,7 +225,7 @@ class MajorLoginInterceptor:
                 jwt_data = None
                 if access_token:
                     try:
-                        jwt_res = req_lib.get(f"http://127.0.0.1:1080/access-jwt?access_token={access_token}", timeout=10)
+                        jwt_res = req_lib.get(f"http://127.0.0.1:2130/access-jwt?access_token={access_token}", timeout=10)
                         if jwt_res.status_code == 200:
                             jwt_data = jwt_res.json()
                             if jwt_data.get("status") == "success":
@@ -354,15 +354,15 @@ if __name__ == "__main__":
     Console.divider("FRX BYPASS — STARTING ALL SERVICES")
     Console.success("Service 1 : mitmproxy      → port 8080 (login interceptor)")
     Console.success("Service 2 : TCP Controller   → port 19112 (DLL raw traffic)")
-    Console.success("Service 3 : JWT API          → port 1080 (JWT utility)")
-    Console.success("Service 4 : Admin Panel      → port 2130 (web interface)")
+    Console.success("Service 3 : JWT API          → port 2130 (JWT utility)")
+    Console.success("Service 4 : Admin Panel      → port 8080 (web interface)")
     Console.info("Platform  : 3 (Garena Android)")
     Console.info("Method    : my_pb2 real-proto (JWT approach)")
     Console.divider()
     
     Console.success("TCP Controller thread started (port 19112)")
-    Console.success("JWT API thread started (port 1080)")
-    Console.success("Admin Panel started (port 2130)")
+    Console.success("JWT API thread started (port 2130)")
+    Console.success("Admin Panel started (port 8080)")
     Console.success("mitmproxy started (port 8080)")
     
     # Static Width Centered Box
@@ -381,7 +381,7 @@ if __name__ == "__main__":
     
     try:
         # Automatically detect the Wispbyte port
-        proxy_port = os.environ.get("SERVER_PORT", "8080")
+        proxy_port = os.environ.get("SERVER_PORT", "2130")
         mitmdump(["-s", __file__, "--listen-host", "0.0.0.0", "-p", str(proxy_port), "--set", "block_global=false"])
     except KeyboardInterrupt: pass
     except Exception as e:
